@@ -4,6 +4,8 @@ Adds an `X-API-KEY` header to requests made to the USPTO Open Data Portal API.
 
 Copyright © 2026 Tamir Zegman.
 
+Example API URL: https://api.uspto.gov/api/v1/patent/ptab-files/IPR/2012/00001/168820640.pdf
+
 ## Load the extension in Chrome
 1. Open `chrome://extensions`.
 2. Enable **Developer mode**.
