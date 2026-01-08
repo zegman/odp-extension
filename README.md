@@ -2,6 +2,8 @@
 
 Adds an `X-API-KEY` header to requests made to the USPTO Open Data Portal API.
 
+Copyright © 2026 Tamir Zegman.
+
 ## Load the extension in Chrome
 1. Open `chrome://extensions`.
 2. Enable **Developer mode**.
