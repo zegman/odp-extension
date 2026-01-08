@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>USPTO ODP API Key</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <header>
+          <p class="eyebrow">USPTO Open Data Portal</p>
+          <h1>API Key Settings</h1>
+          <p>
+            Your key is stored locally and used for requests to
+            <span class="mono">https://api.uspto.gov/api/*</span>.
+          </p>
+        </header>
+
+        <label for="api-key">ODP API key</label>
+        <input id="api-key" name="api-key" type="password" autocomplete="off" />
+        <div class="toggle">
+          <input id="enable-injection" type="checkbox" />
+          <label for="enable-injection">Enable header injection</label>
+        </div>
+        <div class="toggle">
+          <input id="pdf-inline" type="checkbox" />
+          <label for="pdf-inline">Open PDFs inline (force Content-Disposition: inline)</label>
+        </div>
+        <div class="toggle">
+          <input id="pdf-content-type" type="checkbox" />
+          <label for="pdf-content-type">Force PDF content type (application/pdf)</label>
+        </div>
+        <div class="toggle">
+          <input id="show-key" type="checkbox" />
+          <label for="show-key">Show key</label>
+        </div>
+
+        <div class="actions">
+          <button id="save" type="button">Save key</button>
+          <button id="validate" type="button" class="ghost">Validate key</button>
+          <button id="remove" type="button" class="secondary">Remove key</button>
+        </div>
+
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+        <p id="validate-status" class="status subtle" role="status" aria-live="polite"></p>
+        <div class="rule-status">
+          <span>Rule status:</span>
+          <span id="rule-status" class="rule-pill">Unknown</span>
+          <button id="refresh-status" type="button" class="secondary small">Refresh</button>
+        </div>
+        <div class="rule-status">
+          <span>Last match:</span>
+          <span id="last-match" class="rule-pill">None</span>
+        </div>
+        <p id="last-match-url" class="match-url mono"></p>
+
+        <div class="note">
+          <h2>How it works</h2>
+          <ul>
+            <li>Adds the key as the <span class="mono">X-API-KEY</span> header.</li>
+            <li>Applies only to the USPTO API domain.</li>
+            <li>Toggle injection off to pause without deleting the key.</li>
+            <li>PDFs can be forced to open inline instead of downloading.</li>
+            <li>Optionally set PDF responses to <span class="mono">application/pdf</span>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script src="options.js"></script>
+  </body>
+</html>

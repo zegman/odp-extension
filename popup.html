@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>USPTO ODP</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="popup">
+      <header>
+        <h1>USPTO ODP</h1>
+        <p>API key injection status</p>
+      </header>
+
+      <div class="row">
+        <span>Header injection</span>
+        <span id="injection-status" class="pill">Loading</span>
+      </div>
+      <div class="row">
+        <span>Key</span>
+        <span id="key-status" class="pill">Loading</span>
+      </div>
+      <div class="row">
+        <span>Last match</span>
+        <span id="last-match" class="pill">None</span>
+      </div>
+      <p id="last-match-url" class="mono muted"></p>
+
+      <button id="open-options" type="button">Open settings</button>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
