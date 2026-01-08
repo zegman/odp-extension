@@ -17,7 +17,8 @@
   ],
   "host_permissions": [
     "https://api.uspto.gov/*",
-    "https://data-documents.uspto.gov/*"
+    "https://data-documents.uspto.gov/*",
+    "https://data.uspto.gov/*"
   ],
   "background": {
     "service_worker": "background.js"

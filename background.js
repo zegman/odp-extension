@@ -44,7 +44,7 @@ function buildPdfRule() {
       ]
     },
     condition: {
-      regexFilter: "https://(api|data-documents)\\.uspto\\.gov/.*\\.pdf(\\?.*)?$",
+      regexFilter: "https://(api|data-documents|data)\\.uspto\\.gov/.*\\.pdf(\\?.*)?$",
       resourceTypes: ["main_frame", "sub_frame", "xmlhttprequest", "other", "object", "media"]
     }
   };
@@ -65,7 +65,7 @@ function buildPdfContentTypeRule() {
       ]
     },
     condition: {
-      regexFilter: "https://(api|data-documents)\\.uspto\\.gov/.*\\.pdf(\\?.*)?$",
+      regexFilter: "https://(api|data-documents|data)\\.uspto\\.gov/.*\\.pdf(\\?.*)?$",
       resourceTypes: ["main_frame", "sub_frame", "xmlhttprequest", "other", "object", "media"]
     }
   };
