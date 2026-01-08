@@ -35,5 +35,10 @@ https://github.com/zegman/odp-extension/blob/main/PRIVACY.md
 - declarativeNetRequestWithHostAccess: Apply the above rules only to specified USPTO domains.
 - declarativeNetRequestFeedback: Provide diagnostics (last match) to help users verify the rule applies.
 
+## Host Permission Justification
+- https://api.uspto.gov/*: Required to inject the `X-API-KEY` header for USPTO API requests and validate the API key.
+- https://data-documents.uspto.gov/*: Required to set PDF response headers on USPTO document downloads after redirect.
+- https://data.uspto.gov/*: Required to set PDF response headers on USPTO document downloads hosted on the data domain.
+
 ## Single Purpose Statement
 This extension adds the user's USPTO Open Data Portal API key to USPTO API requests so authorized users can access USPTO data endpoints.
