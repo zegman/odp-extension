@@ -223,20 +223,25 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   }
 });
 
-chrome.declarativeNetRequest.onRuleMatchedDebug.addListener((details) => {
-  const request = details.request || {};
-  const rule = details.rule || {};
-  const entry = {
-    time: new Date().toISOString(),
-    ruleId: rule.ruleId || details.ruleId || RULE_ID,
-    url: request.url || "",
-    type: request.type || "",
-    tabId: typeof request.tabId === "number" ? request.tabId : null
-  };
+const ruleMatchedDebug = chrome.declarativeNetRequest?.onRuleMatchedDebug;
+if (ruleMatchedDebug && typeof ruleMatchedDebug.addListener === "function") {
+  ruleMatchedDebug.addListener((details) => {
+    const request = details.request || {};
+    const rule = details.rule || {};
+    const entry = {
+      time: new Date().toISOString(),
+      ruleId: rule.ruleId || details.ruleId || RULE_ID,
+      url: request.url || "",
+      type: request.type || "",
+      tabId: typeof request.tabId === "number" ? request.tabId : null
+    };
 
-  chrome.storage.local.set({ [LAST_MATCH_KEY]: entry });
-  console.log("DNR rule matched:", entry);
-});
+    chrome.storage.local.set({ [LAST_MATCH_KEY]: entry });
+    console.log("DNR rule matched:", entry);
+  });
+} else {
+  console.warn("DNR debug events unavailable; last match tracking disabled.");
+}
 
 chrome.storage.onChanged.addListener((changes, areaName) => {
   if (areaName !== "local") {

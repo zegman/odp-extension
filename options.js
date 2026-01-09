@@ -16,8 +16,10 @@ const statusEl = document.getElementById("status");
 const validateStatusEl = document.getElementById("validate-status");
 const ruleStatusEl = document.getElementById("rule-status");
 const refreshStatusButton = document.getElementById("refresh-status");
+const lastMatchRow = document.getElementById("last-match-row");
 const lastMatchEl = document.getElementById("last-match");
 const lastMatchUrlEl = document.getElementById("last-match-url");
+const hasDnrDebug = Boolean(chrome.declarativeNetRequest?.onRuleMatchedDebug);
 
 function setStatus(message, isError = false) {
   statusEl.textContent = message;
@@ -53,6 +55,24 @@ function refreshRuleStatus() {
 function refreshLastMatch() {
   if (!lastMatchEl) {
     return;
+  }
+
+  if (!hasDnrDebug) {
+    if (lastMatchRow) {
+      lastMatchRow.hidden = true;
+    }
+    if (lastMatchUrlEl) {
+      lastMatchUrlEl.textContent = "";
+      lastMatchUrlEl.hidden = true;
+    }
+    return;
+  }
+
+  if (lastMatchRow) {
+    lastMatchRow.hidden = false;
+  }
+  if (lastMatchUrlEl) {
+    lastMatchUrlEl.hidden = false;
   }
 
   chrome.storage.local.get([LAST_MATCH_KEY], (result) => {

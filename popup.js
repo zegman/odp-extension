@@ -4,9 +4,11 @@ const LAST_MATCH_KEY = "odpLastMatch";
 
 const injectionStatusEl = document.getElementById("injection-status");
 const keyStatusEl = document.getElementById("key-status");
+const lastMatchRow = document.getElementById("last-match-row");
 const lastMatchEl = document.getElementById("last-match");
 const lastMatchUrlEl = document.getElementById("last-match-url");
 const openOptionsButton = document.getElementById("open-options");
+const hasDnrDebug = Boolean(chrome.declarativeNetRequest?.onRuleMatchedDebug);
 
 function setPill(el, text, isError) {
   if (!el) {
@@ -17,6 +19,23 @@ function setPill(el, text, isError) {
 }
 
 function updateStatus() {
+  if (!hasDnrDebug) {
+    if (lastMatchRow) {
+      lastMatchRow.hidden = true;
+    }
+    if (lastMatchUrlEl) {
+      lastMatchUrlEl.textContent = "";
+      lastMatchUrlEl.hidden = true;
+    }
+  } else {
+    if (lastMatchRow) {
+      lastMatchRow.hidden = false;
+    }
+    if (lastMatchUrlEl) {
+      lastMatchUrlEl.hidden = false;
+    }
+  }
+
   chrome.storage.local.get([STORAGE_KEY, ENABLED_KEY, LAST_MATCH_KEY], (result) => {
     if (chrome.runtime.lastError) {
       setPill(injectionStatusEl, "Error", true);

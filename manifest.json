@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "USPTO ODP API Key Injector",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Adds X-API-KEY for USPTO Open Data Portal requests.",
   "icons": {
     "16": "icons/icon16.png",
